@@ -1,6 +1,23 @@
+import { Wrapper } from "@/components/local/container";
+import { Button } from "@/components/ui/button";
+import { Github, X } from "lucide-react";
 import Image from "next/image";
-import { Wrapper } from "./container";
 import { Tab } from "./tab";
+
+const SingUpButton = () => {
+        return (
+                <Button
+                        type="button"
+                        className="flex items-center bg-brand-shape  hover:bg-brand-shape text-brand-background text-base font-bold gap-4 rounded-3xl ml-auto"
+                >
+                        <Github size={24} className="text-brand-green" />
+                        <span className="font-bold text-brand-title">
+                                tiagoluchtenberg
+                        </span>
+                        <X size={24} className="text-brand-green" />
+                </Button>
+        );
+};
 
 const HeaderBrand = () => {
         return (
@@ -15,6 +32,7 @@ const HeaderBrand = () => {
                                 <Tab active={true} label="Home" />
                                 <Tab active={false} label="Posts" />
                         </div>
+                        <SingUpButton />
                 </div>
         );
 };

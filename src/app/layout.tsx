@@ -2,6 +2,7 @@ import { Container } from "@/components/local/container";
 import { Header } from "@/components/local/header";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import { twJoin } from "tailwind-merge";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -21,7 +22,12 @@ export default function RootLayout({
 }) {
         return (
                 <html lang="en">
-                        <body className={roboto.className}>
+                        <body
+                                className={twJoin(
+                                        roboto.className,
+                                        "w-full flex"
+                                )}
+                        >
                                 <Container>
                                         <Header />
                                         {children}
