@@ -12,7 +12,7 @@ const Intro = () => {
 
 const Jumbotron = () => {
         return (
-                <div className="flex flex-col justify-center items-center">
+                <div className="ml-[164px] flex flex-col justify-center items-center">
                         <Image
                                 src="/mulher.svg"
                                 alt="ig.news"
@@ -27,6 +27,7 @@ export default function Home() {
         return (
                 <div className="flex flex-1 justify-center items-center">
                         <Intro />
+                        <Jumbotron />
                 </div>
         );
 }
