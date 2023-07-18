@@ -8,7 +8,7 @@ const SingUpButton = () => {
         return (
                 <Button
                         type="button"
-                        className="flex items-center bg-brand-shape  hover:bg-brand-shape text-brand-background text-base font-bold gap-4 rounded-3xl ml-auto"
+                        className="sm:flex items-center bg-brand-shape  hover:bg-brand-shape text-brand-background text-base font-bold gap-4 rounded-3xl ml-auto hidden"
                 >
                         <Github size={24} className="text-brand-green" />
                         <span className="font-bold text-brand-title">

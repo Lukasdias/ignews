@@ -13,6 +13,10 @@ const roboto = Roboto({
 export const metadata: Metadata = {
         title: "ig.news",
         description: "Ig.news is a blog about the React world",
+        viewport: "width=device-width, initial-scale=1",
+        icons: {
+                icon: "/next.svg",
+        },
 };
 
 export default function RootLayout({
