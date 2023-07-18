@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Intro = () => {
         return (
                 <div className="flex flex-col justify-center items-center">
@@ -11,7 +13,7 @@ const Intro = () => {
 const Jumbotron = () => {
         return (
                 <div className="flex flex-col justify-center items-center">
-                        <img
+                        <Image
                                 src="/mulher.svg"
                                 alt="ig.news"
                                 width="334"

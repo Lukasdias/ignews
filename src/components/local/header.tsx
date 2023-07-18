@@ -11,16 +11,8 @@ const HeaderBrand = () => {
                                 height="100"
                         />
                         <div className="flex gap-8">
-                                <Tab
-                                        active={true}
-                                        label="Home"
-                                        onClick={() => undefined}
-                                />
-                                <Tab
-                                        active={false}
-                                        label="Posts"
-                                        onClick={() => undefined}
-                                />
+                                <Tab active={true} label="Home" />
+                                <Tab active={false} label="Posts" />
                         </div>
                 </div>
         );
