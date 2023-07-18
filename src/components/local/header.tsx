@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { Wrapper } from "./container";
 import { Tab } from "./tab";
 
 const HeaderBrand = () => {
         return (
-                <div className="flex gap-[82px]">
+                <div className="flex gap-[82px] w-full justify-between sm:justify-start">
                         <Image
                                 src="/ig_news.svg"
                                 alt="ig.news"
@@ -20,10 +21,10 @@ const HeaderBrand = () => {
 
 export const Header = () => {
         return (
-                <header className="w-full flex bg-brand-background border-b-brand-shape border-b-4 h-full max-h-[80px] justify-center">
-                        <div className="w-full max-w-7xl flex justify-between">
+                <header className="w-full flex bg-brand-background border-b-brand-shape border-b-4 ">
+                        <Wrapper className="h-20 max-h-[80px]">
                                 <HeaderBrand />
-                        </div>
+                        </Wrapper>
                 </header>
         );
 };
