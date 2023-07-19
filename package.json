@@ -21,6 +21,7 @@
     "framer-motion": "^10.12.22",
     "lucide-react": "^0.261.0",
     "next": "13.4.10",
+    "next-auth": "^4.22.3",
     "postcss": "8.4.26",
     "react": "18.2.0",
     "react-dom": "18.2.0",

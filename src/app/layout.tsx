@@ -1,5 +1,6 @@
 import { Container } from "@/components/local/container";
 import { Header } from "@/components/local/header";
+import { NextAuthProvider } from "@/components/local/next-auth-provider";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { twJoin } from "tailwind-merge";
@@ -31,11 +32,14 @@ export default function RootLayout({
                                         roboto.className,
                                         "w-full flex"
                                 )}
+                                suppressHydrationWarning
                         >
-                                <Container>
-                                        <Header />
-                                        {children}
-                                </Container>
+                                <NextAuthProvider>
+                                        <Container>
+                                                <Header />
+                                                {children}
+                                        </Container>
+                                </NextAuthProvider>
                         </body>
                 </html>
         );
