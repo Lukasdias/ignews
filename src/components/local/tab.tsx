@@ -24,7 +24,7 @@ export const Tab = ({ active, label }: TabProps) => {
                                 {label}
                         </span>
                         {active && (
-                                <div className="absolute flex -bottom-7 w-[59px] h-1 bg-brand-yellow rounded-tl-[10px] rounded-tr-[10px]"></div>
+                                <div className="absolute flex -bottom-6 w-[59px] h-1 bg-brand-yellow rounded-tl-[10px] rounded-tr-[10px]"></div>
                         )}
                 </button>
         );

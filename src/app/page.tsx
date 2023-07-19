@@ -1,8 +1,17 @@
 import { Wrapper } from "@/components/local/container";
 import { Button } from "@/components/ui/button";
+import { formatUSD } from "@/lib/utils";
+import { stripe } from "@/services/stripe";
 import Image from "next/image";
 
-const Intro = () => {
+interface IntroProps {
+        product: {
+                priceId: string;
+                amount: number;
+        };
+}
+
+function Intro(props: IntroProps) {
         return (
                 <div className="flex flex-col gap-4 sm:w-full items-center sm:items-start">
                         <span className="text-2xl font-bold text-brand-title mb-10">
@@ -22,7 +31,8 @@ const Intro = () => {
                                 Get access to all the publications
                                 <br className="block" />
                                 <span className="text-brand-blue font-bold">
-                                        for $9.90 month
+                                        for {formatUSD(props.product.amount)}{" "}
+                                        month
                                 </span>
                         </p>
 
@@ -31,9 +41,9 @@ const Intro = () => {
                         </Button>
                 </div>
         );
-};
+}
 
-const Jumbotron = () => {
+function Jumbotron() {
         return (
                 <Image
                         src="/mulher.svg"
@@ -42,13 +52,22 @@ const Jumbotron = () => {
                         height={520}
                 />
         );
-};
+}
 
-export default function Home() {
+export default async function Home() {
+        const price = await stripe.prices.retrieve(
+                "price_1NVNqsHigjovIELDnh6dpSQv"
+        );
+
+        const product = {
+                priceId: price.id,
+                amount: price?.unit_amount! / 100!,
+        };
+
         return (
                 <Wrapper>
                         <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mt-10 flex-1">
-                                <Intro />
+                                <Intro product={product} />
                                 <Jumbotron />
                         </div>
                 </Wrapper>

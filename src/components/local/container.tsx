@@ -22,7 +22,7 @@ export const Wrapper = ({ children, className }: ContainerProps) => {
         return (
                 <div
                         className={twJoin(
-                                "w-full flex flex-1 justify-between items-center sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-7xl mx-auto px-4 sm:px-10",
+                                "w-full flex flex-1 justify-between items-center sm:max-w-2xl md:max-w-4xl lg:max-w-5xl  2xl:max-w-7xl mx-auto px-4 sm:px-10",
                                 className
                         )}
                 >
