@@ -12,7 +12,12 @@ export function AuthController() {
                 <>
                         <Button
                                 type="button"
-                                className="sm:flex items-center bg-brand-shape  hover:bg-brand-shape text-brand-background text-base font-bold gap-4 rounded-3xl ml-auto hidden hover:opacity-50 transition-opacity duration-200"
+                                className={clsx(
+                                        "sm:flex items-center bg-brand-shape  hover:bg-brand-shape text-brand-background text-base font-bold gap-4 rounded-3xl ml-auto hidden  transition-opacity duration-200",
+                                        {
+                                                "hover:opacity-50": !isLogged,
+                                        }
+                                )}
                                 onClick={() => !session && signIn("github")}
                         >
                                 <Github
@@ -27,11 +32,12 @@ export function AuthController() {
                                                 : "Sing in with Github"}
                                 </span>
                                 {isLogged && (
-                                        <X
-                                                size={24}
-                                                className="text-brand-green"
-                                                onClick={() => signOut()}
-                                        />
+                                        <button onClick={() => signOut()}>
+                                                <X
+                                                        size={24}
+                                                        className="text-brand-green z-10 hover:text-brand-yellow"
+                                                />
+                                        </button>
                                 )}
                         </Button>
                 </>
