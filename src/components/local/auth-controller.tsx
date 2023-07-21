@@ -1,11 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
-import { Github, X } from "lucide-react";
+import { Github, LoaderIcon, X } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export function AuthController() {
-        const { data: session } = useSession();
+        const { data: session, status } = useSession();
         const isLogged = session ? true : false;
 
         return (
@@ -20,24 +20,46 @@ export function AuthController() {
                                 )}
                                 onClick={() => !session && signIn("github")}
                         >
-                                <Github
-                                        size={24}
-                                        className={clsx("text-brand-yellow", {
-                                                "text-brand-green": isLogged,
-                                        })}
-                                />
-                                <span className="font-bold text-brand-title">
-                                        {isLogged
-                                                ? session?.user?.name
-                                                : "Sing in with Github"}
-                                </span>
-                                {isLogged && (
-                                        <button onClick={() => signOut()}>
-                                                <X
+                                {status === "loading" ? (
+                                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-brand-background">
+                                                <LoaderIcon
                                                         size={24}
-                                                        className="text-brand-green z-10 hover:text-brand-yellow"
+                                                        className="text-brand-green"
                                                 />
-                                        </button>
+                                        </div>
+                                ) : (
+                                        <>
+                                                <Github
+                                                        size={24}
+                                                        className={clsx(
+                                                                "text-brand-yellow",
+                                                                {
+                                                                        "text-brand-green":
+                                                                                isLogged,
+                                                                }
+                                                        )}
+                                                />
+                                                <span className="font-bold text-brand-title">
+                                                        {isLogged
+                                                                ? session?.user
+                                                                          ?.name
+                                                                : "Sing in with Github"}
+                                                </span>
+                                                {isLogged && (
+                                                        <button
+                                                                onClick={() =>
+                                                                        signOut()
+                                                                }
+                                                        >
+                                                                <X
+                                                                        size={
+                                                                                24
+                                                                        }
+                                                                        className="text-brand-green z-10 hover:text-brand-yellow"
+                                                                />
+                                                        </button>
+                                                )}
+                                        </>
                                 )}
                         </Button>
                 </>

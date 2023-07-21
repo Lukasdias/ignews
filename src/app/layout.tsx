@@ -1,6 +1,7 @@
 import { Container } from "@/components/local/container";
 import { Header } from "@/components/local/header";
 import { NextAuthProvider } from "@/components/local/next-auth-provider";
+import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { twJoin } from "tailwind-merge";
@@ -38,6 +39,7 @@ export default function RootLayout({
                                         <Container>
                                                 <Header />
                                                 {children}
+                                                <Toaster />
                                         </Container>
                                 </NextAuthProvider>
                         </body>

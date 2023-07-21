@@ -1,12 +1,11 @@
 import { Wrapper } from "@/components/local/container";
-import { Button } from "@/components/ui/button";
+import { SubscribeButton } from "@/components/local/subscribe-button";
 import { formatUSD } from "@/lib/utils";
 import { stripe } from "@/services/stripe";
 import Image from "next/image";
 
 interface IntroProps {
         product: {
-                priceId: string;
                 amount: number;
         };
 }
@@ -36,9 +35,7 @@ function Intro(props: IntroProps) {
                                 </span>
                         </p>
 
-                        <Button className="w-[256px] h-[64px] bg-brand-yellow hover:bg-brand-green font-bold text-2xl text-brand-background rounded-[100px]">
-                                Subscribe now
-                        </Button>
+                        <SubscribeButton />
                 </div>
         );
 }
