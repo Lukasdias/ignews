@@ -1,21 +1,41 @@
-import { Wrapper } from "@/components/local/container";
+"use client";
 
 import { AuthController } from "@/components/local/auth-controller";
+import { Wrapper } from "@/components/local/container";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Tab } from "./tab";
 
 const HeaderBrand = () => {
+        const pathname = usePathname();
+        const isOnHome = pathname === "/";
+        const isOnPosts = pathname === "/posts";
         return (
                 <div className="flex gap-[82px] w-full justify-between sm:justify-start">
-                        <Image
-                                src="/ig_news.svg"
-                                alt="ig.news"
-                                width="100"
-                                height="100"
-                        />
+                        <Link
+                                href="/"
+                                className="flex justify-center items-center"
+                        >
+                                <Image
+                                        src="/ig_news.svg"
+                                        alt="ig.news"
+                                        width="100"
+                                        height="100"
+                                />
+                        </Link>
+
                         <div className="flex gap-8">
-                                <Tab active={true} label="Home" />
-                                <Tab active={false} label="Posts" />
+                                <Tab
+                                        active={isOnHome}
+                                        label="Home"
+                                        targetUrl="/"
+                                />
+                                <Tab
+                                        active={isOnPosts}
+                                        label="Posts"
+                                        targetUrl="/posts"
+                                />
                         </div>
                         <AuthController />
                 </div>

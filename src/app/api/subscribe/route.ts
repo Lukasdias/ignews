@@ -69,10 +69,22 @@ export async function POST(req: NextRequest, res: NextResponse) {
                                 cancel_url: process.env.STRIPE_CANCEL_URL!,
                         });
 
-                return NextResponse.json({
-                        sessionId: stripeCheckoutSession.id,
-                });
+                return NextResponse.json(
+                        {
+                                sessionId: stripeCheckoutSession.id,
+                        },
+                        {
+                                status: 200,
+                        }
+                );
         } else {
-                NextResponse.error();
+                NextResponse.json(
+                        {
+                                message: "Método não permitido",
+                        },
+                        {
+                                status: 405,
+                        }
+                );
         }
 }
