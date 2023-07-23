@@ -27,10 +27,9 @@ export function SubscribeButton() {
                         const stripe = await getStripeJs();
                         stripe?.redirectToCheckout({ sessionId });
                 } catch (e) {
-                        console.log(JSON.stringify(e));
                         toast({
                                 variant: "destructive",
-                                title: "Error",
+                                title: "Error while subscribing, try login again with github.",
                         });
                 }
                 setLoading(false);
