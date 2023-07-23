@@ -91,7 +91,7 @@ export async function POST(req: Request, res: NextResponse) {
                                         );
                                 }
                         }
-                } catch (error) {
+                } catch (error: any) {
                         return NextResponse.json(
                                 {
                                         error: `Webhook signature verification failed ${error.message}}`,
