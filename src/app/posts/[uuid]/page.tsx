@@ -1,18 +1,25 @@
-import { Wrapper } from "@/components/local/container";
+import { FullPost } from "@/components/local/full-post";
 import Head from "next/head";
 
 export default async function Post({ params }: { params: { uuid: string } }) {
         const { uuid } = params;
+        const response = await fetch(
+                `http://localhost:3000/api/posts/${uuid}`,
+                {
+                        next: {
+                                revalidate: 60 * 60,
+                        },
+                }
+        );
+        const post = await response.json();
         return (
-                <Wrapper>
+                <>
                         <Head>
                                 <title>Posts - Ignews</title>
                         </Head>
-                        <main className="flex flex-col flex-1 justify-center items-center md:pt-20">
-                                <h1 className="text-white text-4xl font-bold">
-                                        {uuid}
-                                </h1>
+                        <main className="flex flex-col flex-1 items-center md:pt-20">
+                                <FullPost {...post} />
                         </main>
-                </Wrapper>
+                </>
         );
 }

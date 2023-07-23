@@ -1,32 +1,13 @@
 import { Post, PostPreview } from "@/components/local/post-preview";
-import { formatPostDate } from "@/lib/utils";
-import { getPrismicClient } from "@/services/prismic";
-import { asText } from "@prismicio/client";
 import Head from "next/head";
 
-interface PostProps {
-        posts: Post[];
-}
-
-export async function fetchPosts() {
-        const client = await getPrismicClient();
-
-        const prismicPosts = await client.getAllByType("post", {});
-
-        const posts = prismicPosts.map((post) => ({
-                id: post.id!,
-                title: asText(post.data.title)!,
-                slug: post.uid!,
-                content: asText(post.data.content)!,
-                time: formatPostDate(new Date(post.last_publication_date))!,
-        }));
-
-        return posts;
-}
-
 export default async function Posts() {
-        const posts = await fetchPosts();
-
+        const response = await fetch("http://localhost:3000/api/posts", {
+                next: {
+                        revalidate: 60,
+                },
+        });
+        const posts: Post[] = await response.json();
         return (
                 <>
                         <Head>

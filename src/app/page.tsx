@@ -2,9 +2,12 @@ import { Wrapper } from "@/components/local/container";
 import { SubscribeButton } from "@/components/local/subscribe-button";
 import { formatUSD } from "@/lib/utils";
 import { stripe } from "@/services/stripe";
+import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 import Head from "next/head";
 import Image from "next/image";
+
+dayjs.locale("pt-br");
 
 interface IntroProps {
         product: {
