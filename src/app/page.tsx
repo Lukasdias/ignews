@@ -2,6 +2,8 @@ import { Wrapper } from "@/components/local/container";
 import { SubscribeButton } from "@/components/local/subscribe-button";
 import { formatUSD } from "@/lib/utils";
 import { stripe } from "@/services/stripe";
+import "dayjs/locale/pt-br";
+import Head from "next/head";
 import Image from "next/image";
 
 interface IntroProps {
@@ -63,10 +65,13 @@ export default async function Home() {
 
         return (
                 <Wrapper>
-                        <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mt-10 flex-1">
+                        <Head>
+                                <title>Home - Ignews</title>
+                        </Head>
+                        <main className="flex flex-col sm:flex-row gap-8 justify-center items-center mt-10 flex-1">
                                 <Intro product={product} />
                                 <Jumbotron />
-                        </div>
+                        </main>
                 </Wrapper>
         );
 }

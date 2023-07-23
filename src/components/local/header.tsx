@@ -7,10 +7,23 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Tab } from "./tab";
 
+const pages = [
+        {
+                label: "Home",
+                targetUrl: "/",
+        },
+        {
+                label: "Posts",
+                targetUrl: "/posts",
+        },
+];
+
 const HeaderBrand = () => {
         const pathname = usePathname();
-        const isOnHome = pathname === "/";
-        const isOnPosts = pathname === "/posts";
+        const isHome = pathname === "/";
+        const isPosts =
+                pathname === "/posts" || pathname?.startsWith("/posts/");
+        const pathCheck = [isHome, isPosts];
         return (
                 <div className="flex gap-[82px] w-full justify-between sm:justify-start">
                         <Link
@@ -26,16 +39,18 @@ const HeaderBrand = () => {
                         </Link>
 
                         <div className="flex gap-8">
-                                <Tab
-                                        active={isOnHome}
-                                        label="Home"
-                                        targetUrl="/"
-                                />
-                                <Tab
-                                        active={isOnPosts}
-                                        label="Posts"
-                                        targetUrl="/posts"
-                                />
+                                {pages?.map((page, idx: number) => (
+                                        <Tab
+                                                key={page.label}
+                                                active={
+                                                        pathCheck[idx] ||
+                                                        pathname ===
+                                                                page.targetUrl
+                                                }
+                                                label={page.label}
+                                                targetUrl={page.targetUrl}
+                                        />
+                                ))}
                         </div>
                         <AuthController />
                 </div>

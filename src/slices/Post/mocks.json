@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"uuid": {
-				"__TYPE__": "FieldContent",
-				"value": "end",
-				"type": "Text"
-			},
 			"title": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -18,19 +13,28 @@
 						}
 					}
 				]
-			},
-			"content": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Magna aliqua duis fugiat anim ea voluptate ea. Enim nulla enim voluptate in."
-						}
-					}
-				]
 			}
 		},
-		"items": []
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"content",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Pariatur anim eu ullamco eiusmod nulla reprehenderit enim deserunt duis velit eu minim. Aute fugiat id sit veniam consequat excepteur."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
 	}
 ]

@@ -12,10 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "uuid": {
-          "type": "Text",
-          "config": { "label": "uuid", "placeholder": "" }
-        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -24,7 +20,9 @@
             "allowTargetBlank": true,
             "single": "heading1,heading2,heading3,heading4,heading5,heading6"
           }
-        },
+        }
+      },
+      "items": {
         "content": {
           "type": "StructuredText",
           "config": {
@@ -34,8 +32,7 @@
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
-      },
-      "items": {}
+      }
     }
   ]
 }

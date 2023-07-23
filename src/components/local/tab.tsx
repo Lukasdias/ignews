@@ -1,11 +1,13 @@
+"use client";
+import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+
 interface TabProps {
         active: boolean;
         label: string;
         targetUrl: string;
 }
-
-import clsx from "clsx";
-import Link from "next/link";
 
 export const Tab = ({ active, label, targetUrl }: TabProps) => {
         return (
@@ -25,9 +27,22 @@ export const Tab = ({ active, label, targetUrl }: TabProps) => {
                         >
                                 {label}
                         </span>
-                        {active && (
-                                <div className="absolute flex -bottom-6 w-[59px] h-1 bg-brand-yellow rounded-tl-[10px] rounded-tr-[10px] animate-tab-border"></div>
-                        )}
+                        <AnimatePresence>
+                                {active && (
+                                        <motion.div
+                                                initial={{
+                                                        opacity: 0,
+                                                }}
+                                                animate={{
+                                                        opacity: 1,
+                                                }}
+                                                exit={{
+                                                        opacity: 0,
+                                                }}
+                                                className="absolute flex -bottom-6 w-[59px] h-1 bg-brand-yellow rounded-tl-[10px] rounded-tr-[10px]"
+                                        ></motion.div>
+                                )}
+                        </AnimatePresence>
                 </Link>
         );
 };

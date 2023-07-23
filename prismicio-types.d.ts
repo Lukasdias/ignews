@@ -95,16 +95,6 @@ export type AllDocumentTypes = PostDocument;
  */
 export interface PostSliceDefaultPrimary {
   /**
-   * uuid field in *Post → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: post.primary.uuid
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  uuid: prismic.KeyTextField;
-
-  /**
    * Title field in *Post → Primary*
    *
    * - **Field Type**: Title
@@ -113,13 +103,18 @@ export interface PostSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.TitleField;
+}
 
+/**
+ * Primary content in *Post → Items*
+ */
+export interface PostSliceDefaultItem {
   /**
-   * Content field in *Post → Primary*
+   * Content field in *Post → Items*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.primary.content
+   * - **API ID Path**: post.items[].content
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
@@ -135,7 +130,7 @@ export interface PostSliceDefaultPrimary {
 export type PostSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<PostSliceDefaultPrimary>,
-  never
+  Simplify<PostSliceDefaultItem>
 >;
 
 /**
