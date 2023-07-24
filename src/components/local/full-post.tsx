@@ -18,7 +18,12 @@ export const FullPost: React.FC<Props> = ({
                                 {title}
                         </h1>
                         <time className="mb-4 text-brand-text">{time}</time>
-                        <p className="text-brand-text">{content}</p>
+                        <div
+                                className="text-brand-text"
+                                dangerouslySetInnerHTML={{
+                                        __html: content,
+                                }}
+                        />
                 </div>
         );
 };

@@ -12,6 +12,7 @@ interface TabProps {
 export const Tab = ({ active, label, targetUrl }: TabProps) => {
         return (
                 <Link
+                        prefetch
                         href={targetUrl ? targetUrl : "/"}
                         className={
                                 "flex flex-col flex-1 justify-center items-center relative"
