@@ -8,6 +8,7 @@ import Stripe from "stripe";
 
 const StripeEvents = new Set([
         "checkout.session.completed",
+        "customer.subscription.created",
         "customer.subscription.updated",
         "customer.subscription.deleted",
 ]);
@@ -55,6 +56,7 @@ export async function POST(req: Request, res: NextResponse) {
                         if (StripeEvents.has(type)) {
                                 try {
                                         switch (type) {
+                                                case "customer.subscription.created":
                                                 case "customer.subscription.updated":
                                                 case "customer.subscription.deleted":
                                                         const subscription =
@@ -64,7 +66,8 @@ export async function POST(req: Request, res: NextResponse) {
                                                         await subscriptionController.saveSubscription(
                                                                 subscription.id!,
                                                                 subscription.customer?.toString()!,
-                                                                false
+                                                                type ===
+                                                                        "customer.subscription.created"
                                                         );
                                                         break;
                                                 case "checkout.session.completed":

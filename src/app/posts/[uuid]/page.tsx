@@ -1,10 +1,13 @@
 import { FullPost } from "@/components/local/full-post";
 import Head from "next/head";
 
+import { options } from "@/app/api/auth/[...nextauth]/options";
 import { Post } from "@/components/local/post-preview";
 import { formatPostDate } from "@/lib/utils";
 import { getPrismicClient } from "@/services/prismic";
 import { asText } from "@prismicio/client";
+import { Session, getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 async function fetchPost(uuid: string): Promise<Post | null> {
         try {
@@ -31,6 +34,13 @@ export default async function Post({ params }: { params: { uuid: string } }) {
         const { uuid } = params;
 
         const post = await fetchPost(uuid);
+        const session = (await getServerSession(options)) as Session & {
+                activeSubscription: { [key: string]: any };
+        };
+
+        if (session?.activeSubscription) {
+                redirect("/");
+        }
 
         if (!post) {
                 return (
