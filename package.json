@@ -34,6 +34,7 @@
     "next-auth": "^4.22.3",
     "postcss": "8.4.26",
     "react": "18.2.0",
+    "react-code-blocks": "^0.1.2",
     "react-dom": "18.2.0",
     "stripe": "^12.13.0",
     "tailwind-merge": "^1.14.0",

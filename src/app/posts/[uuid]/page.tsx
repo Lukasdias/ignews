@@ -2,14 +2,12 @@ import { FullPost } from "@/components/local/full-post";
 import Head from "next/head";
 
 import { options } from "@/app/api/auth/[...nextauth]/options";
-import { Post } from "@/components/local/post-preview";
 import { formatPostDate } from "@/lib/utils";
 import { getPrismicClient } from "@/services/prismic";
 import { asText } from "@prismicio/client";
 import { Session, getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 
-async function fetchPost(uuid: string): Promise<Post | null> {
+async function fetchPost(uuid: string) {
         try {
                 const client = await getPrismicClient();
                 const prismicPost = await client.getByUID("post", uuid);
@@ -18,7 +16,7 @@ async function fetchPost(uuid: string): Promise<Post | null> {
                         id: prismicPost.id!,
                         title: asText(prismicPost.data.title)!,
                         slug: prismicPost.uid!,
-                        content: asText(prismicPost.data.content)!,
+                        content: prismicPost.data.content,
                         time: formatPostDate(
                                 new Date(prismicPost.last_publication_date)
                         )!,
@@ -34,13 +32,16 @@ export default async function Post({ params }: { params: { uuid: string } }) {
         const { uuid } = params;
 
         const post = await fetchPost(uuid);
+
         const session = (await getServerSession(options)) as Session & {
                 activeSubscription: { [key: string]: any };
         };
 
-        if (session?.activeSubscription) {
-                redirect("/");
-        }
+        // if (!session?.activeSubscription) {
+        //         redirect("/");
+        // }
+
+        const canSeeFullPost = session?.activeSubscription;
 
         if (!post) {
                 return (
