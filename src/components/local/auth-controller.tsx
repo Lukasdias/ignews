@@ -30,16 +30,15 @@ export function AuthController() {
                                 ) : (
                                         <>
                                                 <Github
-                                                        size={24}
                                                         className={clsx(
-                                                                "text-brand-yellow",
+                                                                "text-brand-yellow w-4 sm:w-6 h-4 sm:h-6",
                                                                 {
                                                                         "text-brand-green":
                                                                                 isLogged,
                                                                 }
                                                         )}
                                                 />
-                                                <span className="font-bold text-brand-title hidden">
+                                                <span className="font-bold text-brand-title hidden sm:block">
                                                         {isLogged
                                                                 ? session?.user
                                                                           ?.name
