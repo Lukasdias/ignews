@@ -4,6 +4,8 @@
 
 Este é um projeto de um blog desenvolvido utilizando as tecnologias atuais e inspirado na trilha de 2021 do Ignite. O objetivo principal é permitir que os usuários acessem o conteúdo completo de um post apenas após efetuarem o pagamento.
 
+Pelo fato do desafio ser de 2021, muitas mudanças foram feitas a começar pela versão do Next(11 -> 13) e as integrações com as APIs de terceiros.
+
 ## Tecnologias Utilizadas
 
 - [Next.js 13](https://nextjs.org): Um framework de desenvolvimento web que combina React com recursos avançados, como renderização do lado do servidor (SSR) e geração de páginas estáticas (SSG).
