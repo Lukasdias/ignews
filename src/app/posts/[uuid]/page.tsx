@@ -34,12 +34,8 @@ export default async function Post({ params }: { params: { uuid: string } }) {
         const post = await fetchPost(uuid);
 
         const session = (await getServerSession(options)) as Session & {
-                activeSubscription: { [key: string]: any };
+                activeSubscription: boolean;
         };
-
-        // if (!session?.activeSubscription) {
-        //         redirect("/");
-        // }
 
         const canSeeFullPost = session?.activeSubscription;
 
@@ -64,7 +60,10 @@ export default async function Post({ params }: { params: { uuid: string } }) {
                                 <title>Posts - Ignews</title>
                         </Head>
                         <main className="flex flex-col flex-1 items-center md:pt-20">
-                                <FullPost {...post} />
+                                <FullPost
+                                        {...post}
+                                        canSeeFullPost={canSeeFullPost}
+                                />
                         </main>
                 </>
         );
