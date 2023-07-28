@@ -13,7 +13,7 @@ export function AuthController() {
                         <Button
                                 type="button"
                                 className={clsx(
-                                        "sm:flex items-center bg-brand-shape  hover:bg-brand-shape text-brand-background text-base font-bold gap-4 rounded-3xl ml-auto   transition-opacity duration-200",
+                                        "sm:flex items-center bg-brand-shape  hover:bg-brand-shape text-brand-background text-base font-bold gap-4 rounded-3xl transition-opacity duration-200",
                                         {
                                                 "hover:opacity-50": !isLogged,
                                         }

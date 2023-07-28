@@ -25,33 +25,41 @@ const HeaderBrand = () => {
                 pathname === "/posts" || pathname?.startsWith("/posts/");
         const pathCheck = [isHome, isPosts];
         return (
-                <div className="flex gap-[82px] w-full justify-between sm:justify-start">
-                        <Link
-                                href="/"
-                                className="flex justify-center items-center"
-                        >
-                                <Image
-                                        src="/ig_news.svg"
-                                        alt="ig.news"
-                                        width="100"
-                                        height="100"
-                                />
-                        </Link>
-
-                        <div className="flex gap-8">
-                                {pages?.map((page, idx: number) => (
-                                        <Tab
-                                                key={page.label}
-                                                active={
-                                                        pathCheck[idx] ||
-                                                        pathname ===
-                                                                page.targetUrl
-                                                }
-                                                label={page.label}
-                                                targetUrl={page.targetUrl}
+                <div className="flex gap-4 w-full justify-between">
+                        <div className="flex gap-4 sm:gap-[82px]">
+                                <Link
+                                        href="/"
+                                        className="flex justify-center items-center"
+                                >
+                                        <Image
+                                                src="/ig_news.svg"
+                                                alt="ig.news"
+                                                width="100"
+                                                height={100}
+                                                className="cursor-pointer w-28 "
                                         />
-                                ))}
+                                </Link>
+
+                                <div className="flex gap-8">
+                                        {pages?.map((page, idx: number) => (
+                                                <Tab
+                                                        key={page.label}
+                                                        active={
+                                                                pathCheck[
+                                                                        idx
+                                                                ] ||
+                                                                pathname ===
+                                                                        page.targetUrl
+                                                        }
+                                                        label={page.label}
+                                                        targetUrl={
+                                                                page.targetUrl
+                                                        }
+                                                />
+                                        ))}
+                                </div>
                         </div>
+
                         <AuthController />
                 </div>
         );

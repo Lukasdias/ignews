@@ -27,24 +27,24 @@ const Content = ({ content }: { content: RichTextField }) => {
                                 heading3: ({ children }) => (
                                         <h3
                                                 className="
-                                                        font-black  text-3xl mb-6 text-white
+                                                        font-black  text-xl sm:text-3xl mb-6 text-white
                                                 "
                                         >
                                                 {children}
                                         </h3>
                                 ),
                                 paragraph: ({ children }) => (
-                                        <p className="text-brand-text mb-4">
+                                        <p className="text-brand-text mb-4 text-sm sm:text-base">
                                                 {children}
                                         </p>
                                 ),
                                 list: ({ children }) => (
-                                        <ul className="text-brand-text mb-4">
+                                        <ul className="text-brand-text mb-4 text-sm sm:text-base">
                                                 {children}
                                         </ul>
                                 ),
                                 oListItem: ({ children }) => (
-                                        <li className="text-brand-text mb-4">
+                                        <li className="text-brand-text mb-4 text-sm sm:text-base">
                                                 {children}
                                         </li>
                                 ),
@@ -89,12 +89,14 @@ export const FullPost: React.FC<Props> = ({
                                 transition: { stiffness: 100, delay: 0.2 },
                         }}
                         exit={{ opacity: 0, y: 20 }}
-                        className="flex flex-col w-full max-w-5xl py-8"
+                        className="flex flex-col w-full max-w-5xl p-4 py-8 sm:p-0"
                 >
-                        <h1 className="font-black text-white text-[54px] mb-6">
+                        <h1 className="font-black text-white text-3xl md:text-5xl mb-6">
                                 {title}
                         </h1>
-                        <time className="mb-4 text-brand-text">{time}</time>
+                        <time className="mb-4 text-brand-text text-xs sm:text-base">
+                                {time}
+                        </time>
                         <div className="from-[rgba(0, 0, 0, 0)]">
                                 <Content content={contentFreeHalf} />
                         </div>

@@ -64,7 +64,7 @@ export default async function Post({ params }: { params: { uuid: string } }) {
                         <Head>
                                 <title>Posts - Ignews</title>
                         </Head>
-                        <main className="flex flex-col flex-1 items-center md:pt-20">
+                        <main className="flex flex-col flex-1 items-center md:pt-20 ">
                                 <FullPost
                                         {...post}
                                         canSeeFullPost={canSeeFullPost}

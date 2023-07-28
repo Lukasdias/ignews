@@ -27,16 +27,27 @@ async function fetchPosts(): Promise<Post[] | null> {
                         }
                 );
 
-                const posts = prismicPosts.map((post, idx) => ({
-                        id: post.id!,
-                        title: asText(post.data.title)!,
-                        slug: post.uid!,
-                        content: firstParagraphOfEveryArticleContent[idx]!,
-                        time: formatPostDate(
-                                new Date(post.last_publication_date)
-                        )!,
-                }));
-
+                const posts = prismicPosts
+                        .sort((a, b) => {
+                                const aDate = new Date(
+                                        a.last_publication_date
+                                ).getTime();
+                                const bDate = new Date(
+                                        b.last_publication_date
+                                ).getTime();
+                                return bDate - aDate;
+                        })
+                        .map((post, idx) => ({
+                                id: post.id!,
+                                title: asText(post.data.title)!,
+                                slug: post.uid!,
+                                content: firstParagraphOfEveryArticleContent[
+                                        idx
+                                ]!,
+                                time: formatPostDate(
+                                        new Date(post.last_publication_date)
+                                )!,
+                        }));
                 return posts;
         } catch (e) {
                 return null;

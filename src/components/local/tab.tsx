@@ -12,7 +12,6 @@ interface TabProps {
 export const Tab = ({ active, label, targetUrl }: TabProps) => {
         return (
                 <Link
-                        prefetch
                         href={targetUrl ? targetUrl : "/"}
                         className={
                                 "flex flex-col flex-1 justify-center items-center relative"
@@ -20,7 +19,7 @@ export const Tab = ({ active, label, targetUrl }: TabProps) => {
                 >
                         <span
                                 className={clsx(
-                                        "text-base font-bold text-brand-title transition-colors duration-200 ease-in-out",
+                                        "text-xs sm:text-base font-bold text-brand-title transition-colors duration-200 ease-in-out",
                                         {
                                                 "text-brand-text": !active,
                                         }
