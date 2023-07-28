@@ -8,7 +8,9 @@ import { formatPostDate } from "@/lib/utils";
 import { getPrismicClient } from "@/services/prismic";
 import { asText } from "@prismicio/client";
 
-export async function fetchPost(uuid: string) {
+export const revalidate = 60;
+
+async function fetchPost(uuid: string) {
         try {
                 const client = await getPrismicClient();
                 const prismicPost = await client.getByUID("post", uuid);
@@ -28,8 +30,6 @@ export async function fetchPost(uuid: string) {
                 return null;
         }
 }
-
-export const revalidate = 60;
 
 export default async function Post({ params }: { params: { uuid: string } }) {
         const { uuid } = params;
