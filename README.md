@@ -10,7 +10,7 @@ Pelo fato do desafio ser de 2021, muitas mudanças foram feitas a começar pela 
 
 - [Next.js 13](https://nextjs.org): Um framework de desenvolvimento web que combina React com recursos avançados, como renderização do lado do servidor (SSR) e geração de páginas estáticas (SSG).
 - [Tailwind CSS](https://tailwindcss.com) com [Radix UI](https://radix-ui.com): Combinação de uma biblioteca de utilitários CSS e um conjunto de componentes reutilizáveis para agilizar o desenvolvimento da interface do usuário.
-- [Shadcn-UI](https://github.com/radix-ui/shadcn-ui): Uma biblioteca de componentes cuidadosamente projetados que você pode copiar e colar em seus aplicativos. Acessível, personalizável e de código aberto.
+- [Shadcn-UI](https://ui.shadcn.com/): Uma biblioteca de componentes cuidadosamente projetados que você pode copiar e colar em seus aplicativos. Acessível, personalizável e de código aberto.
 - [Stripe](https://stripe.com): Uma plataforma de pagamentos que permite a integração fácil e segura de funcionalidades de pagamento em um aplicativo.
 - [FaunaDB](https://fauna.com): Um banco de dados distribuído, consistente e altamente escalável, projetado para aplicativos modernos.
 - [Prismic CMS](https://prismic.io): Um CMS (Content Management System) com foco na entrega de conteúdo dinâmico e personalizado para aplicativos web.
