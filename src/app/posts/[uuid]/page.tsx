@@ -2,12 +2,13 @@ import { FullPost } from "@/components/local/full-post";
 import Head from "next/head";
 
 import { options } from "@/app/api/auth/[...nextauth]/options";
+import { Session, getServerSession } from "next-auth";
+
 import { formatPostDate } from "@/lib/utils";
 import { getPrismicClient } from "@/services/prismic";
 import { asText } from "@prismicio/client";
-import { Session, getServerSession } from "next-auth";
 
-async function fetchPost(uuid: string) {
+export async function fetchPost(uuid: string) {
         try {
                 const client = await getPrismicClient();
                 const prismicPost = await client.getByUID("post", uuid);
@@ -28,6 +29,8 @@ async function fetchPost(uuid: string) {
         }
 }
 
+export const revalidate = 60;
+
 export default async function Post({ params }: { params: { uuid: string } }) {
         const { uuid } = params;
 
@@ -36,6 +39,8 @@ export default async function Post({ params }: { params: { uuid: string } }) {
         const session = (await getServerSession(options)) as Session & {
                 activeSubscription: boolean;
         };
+
+        console.log("session", session);
 
         const canSeeFullPost = session?.activeSubscription;
 

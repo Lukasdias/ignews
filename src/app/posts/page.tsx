@@ -5,7 +5,7 @@ import { formatPostDate } from "@/lib/utils";
 import { getPrismicClient } from "@/services/prismic";
 import { asText } from "@prismicio/client";
 
-async function fetchPosts(): Promise<Post[] | null> {
+export async function fetchPosts(): Promise<Post[] | null> {
         try {
                 const client = await getPrismicClient();
 
@@ -40,6 +40,8 @@ async function fetchPosts(): Promise<Post[] | null> {
                 return null;
         }
 }
+
+export const revalidate = 60;
 
 export default async function Posts() {
         const posts = (await fetchPosts()) as Post[];
