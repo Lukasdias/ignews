@@ -66,9 +66,13 @@ export default async function Posts() {
                         <Head>
                                 <title>Posts - Ignews</title>
                         </Head>
-                        <main className="flex flex-col flex-1 items-center md:pt-20">
-                                {posts?.map((post) => (
-                                        <PostPreview key={post.id} {...post} />
+                        <main className="flex flex-col flex-1 items-center md:pt-20 pb-20">
+                                {posts?.map((post, idx) => (
+                                        <PostPreview
+                                                key={post.id}
+                                                {...post}
+                                                idx={idx}
+                                        />
                                 ))}
                                 {posts?.length === 0 && (
                                         <p className="text-brand-text m-auto animate-pulse">

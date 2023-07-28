@@ -98,7 +98,7 @@ export const options: NextAuthOptions = {
                                 return {
                                         ...session,
                                         activeSubscription:
-                                                userActiveSubscription,
+                                                !!userActiveSubscription,
                                 };
                         } catch (e) {
                                 console.log(e);

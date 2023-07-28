@@ -1,5 +1,8 @@
+"use client";
+
 import { RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
+import { motion } from "framer-motion";
 import { SubscribeNow } from "./subscribe-now";
 
 interface Props {
@@ -62,12 +65,32 @@ export const FullPost: React.FC<Props> = ({
                 content.length / 2
         ) as RichTextField;
 
-        const currentContent = canSeeFullPost
-                ? (content as RichTextField)
-                : (contentFreeHalf as RichTextField);
+        const contentPaidHalf = content.slice(
+                content.length / 2,
+                content.length
+        ) as RichTextField;
+
+        const currentPaidContent = canSeeFullPost
+                ? contentPaidHalf
+                : (contentPaidHalf.slice(
+                          0,
+                          contentPaidHalf.length / 2
+                  ) as RichTextField);
 
         return (
-                <div className="flex flex-col w-full max-w-5xl py-8">
+                <motion.div
+                        initial={{
+                                opacity: 0,
+                                y: 20,
+                        }}
+                        animate={{
+                                opacity: 1,
+                                y: 0,
+                                transition: { stiffness: 100, delay: 0.2 },
+                        }}
+                        exit={{ opacity: 0, y: 20 }}
+                        className="flex flex-col w-full max-w-5xl py-8"
+                >
                         <h1 className="font-black text-white text-[54px] mb-6">
                                 {title}
                         </h1>
@@ -83,9 +106,9 @@ export const FullPost: React.FC<Props> = ({
                                                 }
                                         />
                                 )}
-                                <Content content={currentContent} />
+                                <Content content={currentPaidContent} />
                                 <SubscribeNow />
                         </div>
-                </div>
+                </motion.div>
         );
 };
